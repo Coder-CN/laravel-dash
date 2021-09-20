@@ -10,9 +10,9 @@ class ServiceProvider extends SupportServiceProvider
     {
         $this->publishMigration();
 
-        $this->publishes([
-            __DIR__.'/config/laravel-dash.php' => config_path('laravel-dash.php'),
-        ]);
+        // $this->publishes([
+        //     __DIR__.'/config/laravel-dash.php' => config_path('laravel-dash.php'),
+        // ]);
     }
 
     public function register()
