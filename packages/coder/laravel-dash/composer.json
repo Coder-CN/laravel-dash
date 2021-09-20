@@ -1,0 +1,16 @@
+{
+    "name": "coder/laravel-dash",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Coder\\LaravelDash\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Wekisen",
+            "email": "i@wekisen.com"
+        }
+    ],
+    "require": {}
+}
