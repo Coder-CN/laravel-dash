@@ -15,7 +15,7 @@ class CreateOperationLogsTable extends Migration
     {
         Schema::create('operation_logs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->integer('admin_id');
             $table->string('path');
             $table->string('method');
             $table->ipAddress('ip');

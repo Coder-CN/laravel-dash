@@ -10,7 +10,11 @@ class OperationLog extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'path', 'method', 'ip', 'sql',
+        'admin_id', 'path', 'method', 'ip', 'sql',
         'params'
     ];
+
+    public function admin() {
+        return $this->belongsTo(Admin::class);
+    }
 }
