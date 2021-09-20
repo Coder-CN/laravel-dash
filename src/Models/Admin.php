@@ -2,12 +2,13 @@
 
 namespace Coder\LaravelDash\Models;
 
+use Coder\LaravelDash\Traits\AdminTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Admin extends Model
 {
-    use HasFactory;
+    use HasFactory, AdminTrait;
 
     protected $fillable = [
         'nickname', 'username', 'mobile', 'email', 'avatar',
