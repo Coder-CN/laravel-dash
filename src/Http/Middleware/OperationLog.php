@@ -18,7 +18,7 @@ class OperationLog
     public function handle($request, Closure $next)
     {
         // Pre-Middleware Action
-        Auth::guard('admin')->user()->recordOperation();
+        Auth::user()->recordOperation();
         $response = $next($request);
 
         // Post-Middleware Action

@@ -14,6 +14,10 @@ class OperationLog extends Model
         'params'
     ];
 
+    protected $casts = [
+        'params' => 'array'
+    ];
+
     public function admin() {
         return $this->belongsTo(Admin::class);
     }
