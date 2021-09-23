@@ -12,7 +12,8 @@ class Admin extends Model
 
     protected $fillable = [
         'nickname', 'username', 'mobile', 'email', 'avatar',
-        'password', 'permissions', 'api_token', 'last_login_at'
+        'password', 'permissions', 'api_token', 'last_login_at',
+        'last_login_ip'
     ];
 
     protected $casts = [

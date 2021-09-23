@@ -24,6 +24,7 @@ class CreateAdminsTable extends Migration
             $table->longText('permissions')->nullable();
             $table->string('api_token')->nullable();
             $table->timestamp('last_login_at')->nullable();
+            $table->ipAddress('last_login_ip')->nullable();
             $table->timestamps();
         });
     }
