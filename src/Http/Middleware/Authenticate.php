@@ -10,7 +10,7 @@ class Authenticate extends Middleware
     protected function unauthenticated($request, array $guards)
     {
         if ($guards[0] === 'admin') {
-            throw new \Exception('Unauthenticated.', 401);
+            throw new AuthenticationException('Unauthenticated.');
         } else {
             throw new AuthenticationException(
                 'Unauthenticated.', $guards, $this->redirectTo($request)

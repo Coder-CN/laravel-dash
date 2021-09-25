@@ -3,6 +3,7 @@
 namespace Coder\LaravelDash\Exceptions;
 
 use Coder\LaravelDash\Http\Controllers\Controller;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
@@ -57,6 +58,10 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         $api = new Controller;
+
+        if ($exception instanceof AuthenticationException) {
+            return $api->fail($exception->getMessage(), [], 401);
+        }
 
         if ($exception instanceof ModelNotFoundException) {
             return $api->fail('Data not found', [], 404);
