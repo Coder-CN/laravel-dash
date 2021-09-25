@@ -75,10 +75,8 @@ class Handler extends ExceptionHandler
             return $api->fail($exception->validator->messages()->first(), [], 422);
         }
 
-        if (! ($exception instanceof NotFoundHttpException) &&
-            ! ($exception instanceof ValidationException) &&
-            ! ($exception instanceof MethodNotAllowedHttpException)) {
-                // 
+        if ($exception instanceof NotFoundHttpException) {
+            return $api->fail('404 Not Found', [], 404);
         }
 
         return $api->fail($exception->getMessage(), [], $exception->getCode());
