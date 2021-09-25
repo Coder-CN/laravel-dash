@@ -34,7 +34,7 @@ return [
         [
             'path' => '/banner',
             'name' => 'Banner',
-            'component' => 'RouteView',
+            'component' => 'Banner',
             'meta' => ['title' => 'Banner', 'keepAlive' => true, 'icon' => 'file-image'],
             'children' => [],
         ],
