@@ -81,6 +81,8 @@ class Handler extends ExceptionHandler
                 // 
         }
 
-        return parent::render($request, $exception);
+        return $api->fail($exception->getMessage(), [], $exception->getCode());
+
+        // return parent::render($request, $exception);
     }
 }

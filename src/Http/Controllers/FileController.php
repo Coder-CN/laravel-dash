@@ -80,7 +80,7 @@ class FileController extends Controller
             File::destroy($request->input('ids'));
             return $this->success();
         } catch (\Exception $e) {
-            return $this->fail($e->getMessage());
+            throw $e;
         }
     }
 }
