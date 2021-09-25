@@ -29,6 +29,15 @@ return [
                 ],
             ],
         ],
+        
+        // dashboard
+        [
+            'path' => '/banner',
+            'name' => 'Banner',
+            'component' => 'RouteView',
+            'meta' => ['title' => 'Banner', 'keepAlive' => true, 'icon' => 'file-image'],
+            'children' => [],
+        ],
 
         // account
         [
