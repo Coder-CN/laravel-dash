@@ -77,7 +77,7 @@ class BannerController extends Controller
             $banner->save();
             return $this->success(new ResourcesBanner($banner));
         } catch (\Exception $e) {
-            throw $e;
+            return $this->fail($e->getMessage());
         }
     }
 
@@ -94,7 +94,7 @@ class BannerController extends Controller
             $banner->delete();
             return $this->success();
         } catch (\Exception $e) {
-            throw $e;
+            return $this->fail($e->getMessage());
         }
     }
 }

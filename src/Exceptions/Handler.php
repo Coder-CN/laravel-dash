@@ -79,8 +79,8 @@ class Handler extends ExceptionHandler
             return $api->fail('404 Not Found', [], 404);
         }
 
-        return $api->fail($exception->getMessage(), [], $exception->getCode());
+        // return $api->fail($exception->getMessage(), [], $exception->getCode());
 
-        // return parent::render($request, $exception);
+        return parent::render($request, $exception);
     }
 }
