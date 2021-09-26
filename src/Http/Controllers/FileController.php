@@ -18,7 +18,7 @@ class FileController extends Controller
         $perPage = $request->input('pageSize', 21);
         $pageNo = $request->input('pageNo', 1);
 
-        $data = File::latest()->paginate($perPage, '*', 'page', $pageNo);
+        $data = File::filter($request->all())->latest()->paginate($perPage, '*', 'page', $pageNo);
 
         return $this->success([
             'data' => ResourcesFile::collection($data->items()),

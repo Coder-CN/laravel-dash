@@ -10,4 +10,15 @@ class File extends Model
     use HasFactory;
 
     protected $fillable = ['type', 'url'];
+
+    public function scopeFilter($query, $params)
+    {
+        foreach ($params as $key => $value) {
+            if ($key === 'types' && is_array($value) && count($value) > 0) {
+                $query->whereIn('type', $value);
+            }
+        }
+
+        return $query;
+    }
 }

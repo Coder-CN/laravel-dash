@@ -22,7 +22,7 @@ class BannerController extends Controller
         $perPage = $request->input('pageSize', 10);
         $pageNo = $request->input('pageNo', 1);
 
-        $data = Banner::show()->orderBy('sort')->paginate($perPage, '*', 'page', $pageNo);
+        $data = Banner::orderBy('sort')->paginate($perPage, '*', 'page', $pageNo);
 
         return $this->success([
             'data' => ResourcesBanner::collection($data->items()),

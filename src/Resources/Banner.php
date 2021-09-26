@@ -21,7 +21,7 @@ class Banner extends JsonResource
             'subtitle' => $this->subtitle,
             'picture' => $this->picture,
             'link_url' => $this->link_url,
-            'is_show' => boolval($this->is_show),
+            'is_show' => intval($this->is_show),
             'sort' => intval($this->sort)
         ];
     }
