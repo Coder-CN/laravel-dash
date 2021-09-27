@@ -30,12 +30,12 @@ return [
             ],
         ],
         
-        // dashboard
+        // banner
         [
             'path' => '/banner',
             'name' => 'Banner',
             'component' => 'Banner',
-            'meta' => ['title' => 'Banner', 'keepAlive' => true, 'icon' => 'file-image'],
+            'meta' => ['title' => 'Banner', 'keepAlive' => true, 'icon' => 'picture'],
             'children' => [],
         ],
 

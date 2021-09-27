@@ -2,7 +2,7 @@
 
 namespace Coder\LaravelDash\Http\Controllers;
 
-use Coder\LaravelDash\Resources\Banner as ResourcesBanner;
+use Coder\LaravelDash\Http\Resources\Banner as ResourcesBanner;
 use Coder\LaravelDash\Models\Banner;
 use Illuminate\Http\Request;
 
@@ -26,22 +26,11 @@ class BannerController extends Controller
 
         return $this->success([
             'data' => ResourcesBanner::collection($data->items()),
-            'pageSize' => $data->perPage(),
+            'pageSize' => intval($data->perPage()),
             'pageNo' => $data->currentPage(),
             'totalPage' => $data->lastPage(),
             'totalCount' => $data->total()
         ]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**

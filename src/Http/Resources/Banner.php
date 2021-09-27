@@ -1,10 +1,10 @@
 <?php
 
-namespace Coder\LaravelDash\Resources;
+namespace Coder\LaravelDash\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class File extends JsonResource
+class Banner extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,9 +16,13 @@ class File extends JsonResource
     {
         return [
             'id' => intval($this->id),
-            'type' => $this->type,
-            'url' => $this->url,
-            'time' => $this->created_at->toDateTimeString()
+            'location' => $this->location,
+            'title' => $this->title,
+            'subtitle' => $this->subtitle,
+            'picture' => $this->picture,
+            'link_url' => $this->link_url,
+            'is_show' => intval($this->is_show),
+            'sort' => intval($this->sort)
         ];
     }
 }

@@ -3,7 +3,7 @@
 namespace Coder\LaravelDash\Http\Controllers;
 
 use Coder\LaravelDash\Models\File;
-use Coder\LaravelDash\Resources\File as ResourcesFile;
+use Coder\LaravelDash\Http\Resources\File as ResourcesFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -22,7 +22,7 @@ class FileController extends Controller
 
         return $this->success([
             'data' => ResourcesFile::collection($data->items()),
-            'pageSize' => $data->perPage(),
+            'pageSize' => intval($data->perPage()),
             'pageNo' => $data->currentPage(),
             'totalPage' => $data->lastPage(),
             'totalCount' => $data->total()
