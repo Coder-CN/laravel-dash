@@ -38,6 +38,29 @@ return [
             'meta' => ['title' => 'Banner', 'keepAlive' => true, 'icon' => 'picture'],
             'children' => [],
         ],
+        
+        // list
+        [
+            'path' => '/list',
+            'name' => 'List',
+            'redirect' => '/list/info-list',
+            'component' => 'RouteView',
+            'meta' => ['title' => 'List', 'keepAlive' => true, 'icon' => 'table'],
+            'children' => [
+                [
+                    'path' => '/list/info-list',
+                    'name' => 'InfoList',
+                    'component' => 'InfoList',
+                    'meta' => ['title' => 'Info List', 'keepAlive' => false],
+                ],
+                [
+                    'path' => '/list/info-list/:id([1-9]\\d*)?',
+                    'name' => 'ListDetail',
+                    'component' => 'ListDetail',
+                    'meta' => ['title' => 'List Detail', 'keepAlive' => false, 'hidden' => true],
+                ]
+            ],
+        ],
 
         // account
         [

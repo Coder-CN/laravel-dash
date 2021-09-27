@@ -21,4 +21,9 @@ class File extends Model
 
         return $query;
     }
+
+    public function infoLists()
+    {
+        return $this->morphedByMany(InfoList::class, 'fileable');
+    }
 }
