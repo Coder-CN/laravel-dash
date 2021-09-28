@@ -42,7 +42,7 @@ class CreateModulesTable extends Migration
             $table->string('source')->nullable();
             $table->integer('views')->default(0);
             $table->boolean('is_show')->default(true);
-            $table->integer('sort')->default(0);
+            $table->integer('sort')->default(1);
             $table->timestamp('release_at')->nullable();
             $table->softDeletes();
             $table->timestamps();

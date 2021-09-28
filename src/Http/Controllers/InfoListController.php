@@ -63,7 +63,7 @@ class InfoListController extends Controller
             'title' => 'required',
             'pictures' => 'array',
             'is_show' => 'required|boolean',
-            'sort' => 'required|integer',
+            'sort' => 'required|integer|min:1',
             'files' => 'array',
             'files.*.id' => 'required|exists:files,id',
             'files.*.title' => 'required'
@@ -87,8 +87,20 @@ class InfoListController extends Controller
             $data->author = $request->input('author');
             $data->source = $request->input('source');
             $data->is_show = $request->input('is_show');
-            $data->sort = $request->input('sort');
             $data->release_at = $request->input('release_at');
+
+            if (!$data->id) {
+                $data->sort = $request->input('sort');
+                InfoList::where('sort', '>=', $data->sort)->increment('sort');
+            } else if ($data->sort !== $request->input('sort')) {
+                $original_sort = $data->sort;
+                $data->sort = $request->input('sort');
+                if ($original_sort > $data->sort) { // 如果排序靠前，区间往后移一位
+                    InfoList::whereBetween('sort', [$data->sort, $original_sort - 1])->where('id', '<>', $data->id)->increment('sort');
+                } else { // 如果排序靠后，区间往前移一位
+                    InfoList::whereBetween('sort', [$original_sort + 1, $data->sort])->where('id', '<>', $data->id)->decrement('sort');
+                }
+            }
             $data->save();
 
             // 更新关联文件
@@ -130,6 +142,36 @@ class InfoListController extends Controller
             return $this->success();
         } catch (\Exception $e) {
             DB::rollBack();
+            return $this->fail($e->getMessage());
+        }
+    }
+
+    /**
+     * 更新排序
+     */
+    public function updateSort(Request $request, $id)
+    {
+        $this->validate($request, [
+            'sort' => 'required|integer|min:1'
+        ]);
+        
+        $data = InfoList::findOrFail($id);
+        try {
+            DB::beginTransaction();
+            if ($data->sort !== $request->input('sort')) {
+                $original_sort = $data->sort;
+                $data->sort = $request->input('sort');
+                if ($original_sort > $data->sort) { // 如果排序靠前，区间往后移一位
+                    InfoList::whereBetween('sort', [$data->sort, $original_sort - 1])->where('id', '<>', $data->id)->increment('sort');
+                } else { // 如果排序靠后，区间往前移一位
+                    InfoList::whereBetween('sort', [$original_sort + 1, $data->sort])->where('id', '<>', $data->id)->decrement('sort');
+                }
+            }
+            $data->save();
+
+            DB::commit();
+            return $this->success(new ResourcesInfoList($data));
+        } catch (\Exception $e) {
             return $this->fail($e->getMessage());
         }
     }

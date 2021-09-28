@@ -28,7 +28,8 @@ class InfoList extends Model
         foreach ($params as $key => $value) {
             if ($key === 'content' && $value) {
                 $query->where(function ($query) use ($value) {
-                    $query->where('id', $value)->orWhere('title', 'like', '%' . $value . '%')
+                    $query->where('id', $value)
+                        ->orWhere('title', 'like', '%' . $value . '%')
                         ->orWhere('description', 'like', '%' . $value . '%')
                         ->orWhere('author', $value)
                         ->orWhere('source', $value);
