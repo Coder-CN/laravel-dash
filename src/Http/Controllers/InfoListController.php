@@ -178,4 +178,11 @@ class InfoListController extends Controller
             return $this->fail($e->getMessage());
         }
     }
+
+    public function create()
+    {
+        return $this->success([
+            'maxSort' => InfoList::max('sort')
+        ]);
+    }
 }
