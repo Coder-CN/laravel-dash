@@ -54,10 +54,10 @@ return [
                     'meta' => ['title' => 'Info List', 'keepAlive' => false],
                 ],
                 [
-                    'path' => '/list/info-list/:id([1-9]\\d*)?',
-                    'name' => 'ListDetail',
-                    'component' => 'ListDetail',
-                    'meta' => ['title' => 'List Detail', 'keepAlive' => false, 'hidden' => true],
+                    'path' => '/list/info-list/edit/:id([1-9]\\d*)?',
+                    'name' => 'ListEdit',
+                    'component' => 'ListEdit',
+                    'meta' => ['title' => 'List Edit', 'keepAlive' => false, 'hidden' => true],
                 ]
             ],
         ],
