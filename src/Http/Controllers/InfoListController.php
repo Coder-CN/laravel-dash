@@ -134,6 +134,9 @@ class InfoListController extends Controller
             DB::beginTransaction();
             
             $data = InfoList::find($id);
+            // 更新排序
+            InfoList::where('sort', '>', $data->sort)->decrement('sort');
+
             // 删除关联文件记录
             $data->files()->detach();
             $data->delete();
