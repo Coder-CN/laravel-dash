@@ -15,4 +15,8 @@ class Fileable extends Pivot
     ];
 
     protected $dates = ['expiration_at'];
+
+    protected $casts = [
+        'info' => 'array'
+    ];
 }

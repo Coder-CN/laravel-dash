@@ -2,6 +2,7 @@
 
 namespace Coder\LaravelDash\Http\Resources;
 
+use Coder\LaravelDash\Models\InfoList as ModelsInfoList;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class InfoList extends JsonResource
@@ -34,7 +35,8 @@ class InfoList extends JsonResource
             'views' => intval($this->views),
             'is_show' => intval($this->is_show),
             'sort' => intval($this->sort),
-            'release_at' => $this->release_at ? $this->release_at->timestamp : null
+            'release_at' => $this->release_at ? $this->release_at->timestamp : null,
+            'maxSort' => ModelsInfoList::max('sort')
         ];
 
         if ($this->detail) {

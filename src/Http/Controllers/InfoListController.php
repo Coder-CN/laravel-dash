@@ -3,6 +3,7 @@
 namespace Coder\LaravelDash\Http\Controllers;
 
 use Coder\LaravelDash\Http\Resources\InfoList as ResourcesInfoList;
+use Coder\LaravelDash\Models\File;
 use Coder\LaravelDash\Models\InfoList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -106,9 +107,14 @@ class InfoListController extends Controller
             // 更新关联文件
             $files = [];
             foreach ($request->input('files', []) as $file) {
+                $file_info = get_headers(File::find($file['id'])->url);
                 $files[$file['id']] = [
                     'title' => $file['title'],
-                    'expiration_at' => $file['expiration_at']
+                    'expiration_at' => isset($file['expiration_at']) ? $file['expiration_at'] : null,
+                    'info' => json_encode([
+                        'size' => intval(substr($file_info[4], strrpos($file_info[4], ':') + 2)),
+                        'type' => substr($file_info[3], strrpos($file_info[3], ':') + 2, (strrpos($file_info[3], '/') - strrpos($file_info[3], ':') - 2))
+                    ])
                 ];
             }
             $data->files()->sync($files);
