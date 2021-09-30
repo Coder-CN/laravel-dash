@@ -64,33 +64,27 @@ return [
 
         // account
         [
-            'path' => '/account',
+            'path' => '/settings',
             'component' => 'RouteView',
             'redirect' => '/account/settings',
-            'name' => 'Account',
-            'meta' => ['title' => 'Account', 'icon' => 'user', 'keepAlive' => true],
+            'name' => 'Settings',
+            'meta' => ['title' => 'Settings', 'icon' => 'setting', 'keepAlive' => true],
             'children' => [
                 [
-                    'path' => '/account/settings',
+                    'path' => '/settings/account',
                     'name' => 'AccountSettings',
                     'component' => 'AccountSettings',
                     'meta' => ['title' => 'AccountSettings', 'hideHeader' => true, 'hideChildren' => true],
-                    'redirect' => '/account/settings/basic',
+                    'redirect' => '/settings/account/basic',
                     'children' => [
                         [
-                            'path' => '/account/settings/basic',
+                            'path' => '/settings/account/basic',
                             'name' => 'BasicSetting',
                             'component' => 'BasicSetting',
                             'meta' => ['title' => 'BaseSetting', 'hidden' => true],
                         ],
                         [
-                            'path' => '/account/settings/security',
-                            'name' => 'SecuritySettings',
-                            'component' => 'SecuritySettings',
-                            'meta' => ['title' => 'SecuritySetting', 'hidden' => true, 'keepAlive' => true],
-                        ],
-                        [
-                            'path' => '/account/settings/notification',
+                            'path' => '/settings/account/notification',
                             'name' => 'NotificationSettings',
                             'component' => 'NotificationSettings',
                             'meta' => ['title' => 'Notification', 'hidden' => true, 'keepAlive' => true],
