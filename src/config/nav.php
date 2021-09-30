@@ -91,6 +91,21 @@ return [
                         ],
                     ],
                 ],
+                [
+                    'path' => '/settings/system',
+                    'name' => 'SystemSettings',
+                    'component' => 'SystemSettings',
+                    'meta' => ['title' => 'SystemSettings', 'hideHeader' => true, 'hideChildren' => true],
+                    'redirect' => '/settings/system/basic',
+                    'children' => [
+                        [
+                            'path' => '/settings/system/basic',
+                            'name' => 'SystemBasicSetting',
+                            'component' => 'SystemBasicSetting',
+                            'meta' => ['title' => 'WebSetting', 'hidden' => true],
+                        ]
+                    ],
+                ],
             ],
         ],
     ],

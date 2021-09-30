@@ -10,6 +10,8 @@ class ServiceProvider extends SupportServiceProvider
     {
         $this->publishMigration();
 
+        $this->publishSeeder();
+
         $this->publishes([
             __DIR__.'/config/nav.php' => config_path('nav.php'),
         ]);
@@ -34,5 +36,14 @@ class ServiceProvider extends SupportServiceProvider
         $this->publishes([
             $migrations => $this->app->databasePath().'/migrations',
         ], 'migrations');
+    }
+
+    public function publishSeeder(){
+        // Publish seeders
+        $seeders = realpath(__DIR__.'/../database/seeders');
+
+        $this->publishes([
+            $seeders => $this->app->databasePath().'/seeders',
+        ], 'seeders');
     }
 }
