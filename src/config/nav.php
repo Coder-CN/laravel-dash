@@ -60,10 +60,10 @@ return [
                     'meta' => ['title' => '最新動向', 'keepAlive' => false],
                 ],
                 [
-                    'path' => '/list/edit/:class_id([1-9]\\d*)/:id([1-9]\\d*)?',
+                    'path' => '/list/edit/:class_id(8|9)/:id([1-9]\\d*)?',
                     'name' => 'ListEdit',
                     'component' => 'ListEdit',
-                    'meta' => ['title' => '文章編輯', 'keepAlive' => false, 'hidden' => true],
+                    'meta' => ['title' => '最新動向編輯', 'keepAlive' => false, 'hidden' => true],
                 ]
             ],
         ],
