@@ -43,6 +43,34 @@ class ConfigSeeder extends Seeder
                 'key' => 'web_copyright',
                 'value' => ''
             ],
+            [
+                'key' => 'address',
+                'value' => ''
+            ],
+            [
+                'key' => 'contact_phone',
+                'value' => ''
+            ],
+            [
+                'key' => 'fax',
+                'value' => ''
+            ],
+            [
+                'key' => 'contact_email',
+                'value' => ''
+            ],
+            [
+                'key' => 'contacts',
+                'value' => ''
+            ],
+            [
+                'key' => 'upload_type',
+                'value' => ''
+            ],
+            [
+                'key' => 'upload_maximum_size',
+                'value' => ''
+            ],
         ]);
     }
 }
