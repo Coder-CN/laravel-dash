@@ -63,7 +63,6 @@ class InfoListController extends Controller
         $this->validate($request, [
             'class_id' => 'required|exists:info_classes,id',
             'title' => 'required',
-            'pictures' => 'array',
             'is_show' => 'required|boolean',
             'sort' => 'required|integer|min:1',
             'files' => 'array',
@@ -186,11 +185,11 @@ class InfoListController extends Controller
         }
     }
 
-    public function create($class_id)
+    public function edit($class_id)
     {
         return $this->success([
             'classes' => InfoClass::findOrFail($class_id)->parent->children()->select(['id', 'name'])->get(),
-            'maxSort' => InfoList::where('class_id', $class_id)->max('sort') ?: 1
+            'maxSort' => InfoList::where('class_id', $class_id)->max('sort')
         ]);
     }
 }
