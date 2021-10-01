@@ -21,7 +21,10 @@ class ConfigSeeder extends Seeder
             ],
             [
                 'key' => 'web_name',
-                'value' => 'myWeb'
+                'value' => json_encode([
+                    'zh-TW' => '我的網站',
+                    'en-US' => 'MyWebsite'
+                ])
             ],
             [
                 'key' => 'web_host',
@@ -29,15 +32,24 @@ class ConfigSeeder extends Seeder
             ],
             [
                 'key' => 'web_seotitle',
-                'value' => ''
+                'value' => json_encode([
+                    'zh-TW' => '',
+                    'en-US' => ''
+                ])
             ],
             [
                 'key' => 'web_keywords',
-                'value' => ''
+                'value' => json_encode([
+                    'zh-TW' => '',
+                    'en-US' => ''
+                ])
             ],
             [
                 'key' => 'web_description',
-                'value' => ''
+                'value' => json_encode([
+                    'zh-TW' => '',
+                    'en-US' => ''
+                ])
             ],
             [
                 'key' => 'web_copyright',
