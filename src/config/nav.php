@@ -39,25 +39,31 @@ return [
             'children' => [],
         ],
         
-        // list
+        // Latest News
         [
             'path' => '/list',
-            'name' => 'List',
-            'redirect' => '/list/info-list',
+            'name' => 'LatestNews',
+            'redirect' => '/list/8',
             'component' => 'RouteView',
-            'meta' => ['title' => 'List', 'keepAlive' => true, 'icon' => 'table'],
+            'meta' => ['title' => '最新動向', 'keepAlive' => true, 'icon' => 'table'],
             'children' => [
                 [
-                    'path' => '/list/info-list',
-                    'name' => 'InfoList',
+                    'path' => '/list/8',
+                    'name' => 'IndustryNewsList',
                     'component' => 'InfoList',
-                    'meta' => ['title' => 'Info List', 'keepAlive' => false],
+                    'meta' => ['title' => '行業新聞', 'keepAlive' => false],
                 ],
                 [
-                    'path' => '/list/info-list/edit/:id([1-9]\\d*)?',
+                    'path' => '/list/9',
+                    'name' => 'LatestNewsList',
+                    'component' => 'InfoList',
+                    'meta' => ['title' => '最新動向', 'keepAlive' => false],
+                ],
+                [
+                    'path' => '/list/edit/:class_id([1-9]\\d*)/:id([1-9]\\d*)?',
                     'name' => 'ListEdit',
                     'component' => 'ListEdit',
-                    'meta' => ['title' => 'List Edit', 'keepAlive' => false, 'hidden' => true],
+                    'meta' => ['title' => '文章編輯', 'keepAlive' => false, 'hidden' => true],
                 ]
             ],
         ],
