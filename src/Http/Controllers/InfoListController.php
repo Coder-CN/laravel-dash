@@ -4,6 +4,7 @@ namespace Coder\LaravelDash\Http\Controllers;
 
 use Coder\LaravelDash\Http\Resources\InfoList as ResourcesInfoList;
 use Coder\LaravelDash\Models\File;
+use Coder\LaravelDash\Models\InfoClass;
 use Coder\LaravelDash\Models\InfoList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -185,10 +186,11 @@ class InfoListController extends Controller
         }
     }
 
-    public function create()
+    public function create($class_id)
     {
         return $this->success([
-            'maxSort' => InfoList::max('sort')
+            'classes' => InfoClass::findOrFail($class_id)->parent->children()->select(['id', 'name'])->get(),
+            'maxSort' => InfoList::where('class_id', $class_id)->max('sort') ?: 1
         ]);
     }
 }
