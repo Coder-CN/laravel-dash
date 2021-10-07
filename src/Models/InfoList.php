@@ -14,7 +14,7 @@ class InfoList extends Model
         'class_id', 'title', 'description', 'picture',
         'pictures', 'link_url', 'keywords', 'content',
         'author', 'source', 'views', 'is_show', 'sort',
-        'release_at'
+        'release_at', 'is_top'
     ];
 
     protected $casts = [
@@ -36,6 +36,8 @@ class InfoList extends Model
                 });
             } else if ($key === 'release_at' && is_array($value)) {
                 $query->where('release_at', '>=', $value[0])->where('release_at', '<=', $value[1]);
+            } else if ($key === 'is_top') {
+                $query->where('is_top', $value ? true : false);
             }
         }
 
@@ -45,6 +47,11 @@ class InfoList extends Model
     public function scopeClass($query, $class_id)
     {
         return $query->where('class_id', $class_id);
+    }
+
+    public function scopeTop($query)
+    {
+        return $query->where('is_top', true);
     }
 
     public function infoClass()

@@ -64,6 +64,7 @@ class InfoListController extends Controller
             'class_id' => 'required|exists:info_classes,id',
             'title' => 'required',
             'is_show' => 'required|boolean',
+            'is_top' => 'required|boolean',
             'sort' => 'required|integer|min:1',
             'files' => 'array',
             'files.*.id' => 'required|exists:files,id',
@@ -88,6 +89,7 @@ class InfoListController extends Controller
             $data->author = $request->input('author');
             $data->source = $request->input('source');
             $data->is_show = $request->input('is_show');
+            $data->is_top = $request->input('is_top');
             $data->release_at = $request->input('release_at');
 
             if (!$data->id) {

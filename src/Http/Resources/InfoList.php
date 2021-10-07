@@ -34,6 +34,7 @@ class InfoList extends JsonResource
             'source' => $this->source,
             'views' => intval($this->views),
             'is_show' => intval($this->is_show),
+            'is_top' => intval($this->is_top),
             'sort' => intval($this->sort),
             'release_at' => $this->release_at ? $this->release_at->timestamp : null,
             'maxSort' => ModelsInfoList::max('sort')
