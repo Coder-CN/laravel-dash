@@ -13,11 +13,12 @@ class InfoClass extends Model
     protected $fillable = [
         'name', 'parent_id', 'description', 'picture',
         'pictures', 'link_url', 'seo_title', 'keywords',
-        'is_show', 'sort'
+        'is_show', 'sort', 'diy_content'
     ];
 
     protected $casts = [
-        'pictures' => 'array'
+        'pictures' => 'array',
+        'diy_content' => 'array'
     ];
 
     public function parent()
