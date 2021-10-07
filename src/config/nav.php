@@ -35,7 +35,7 @@ return [
             'path' => '/banner',
             'name' => 'Banner',
             'component' => 'Banner',
-            'meta' => ['title' => 'Banner', 'keepAlive' => true, 'icon' => 'picture'],
+            'meta' => ['title' => '圖片', 'keepAlive' => true, 'icon' => 'picture'],
             'children' => [],
         ],
         
@@ -45,7 +45,7 @@ return [
             'name' => 'LatestNews',
             'redirect' => '/list/8',
             'component' => 'RouteView',
-            'meta' => ['title' => '最新動向', 'keepAlive' => true, 'icon' => 'table'],
+            'meta' => ['title' => '最新動向', 'keepAlive' => true, 'icon' => 'file-text'],
             'children' => [
                 [
                     'path' => '/list/8',
