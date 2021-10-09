@@ -77,7 +77,7 @@ class ConfigController extends Controller
         try {
             $section->update($request->only([
                 'name', 'description', 'picture', 'pictures', 'link_url',
-                'seo_title', 'keywords', 'is_show'
+                'seo_title', 'keywords', 'is_show', 'sub_title'
             ]));
             return $this->success(new Section($section));
         } catch (\Exception $e) {
