@@ -17,7 +17,7 @@ class ConfigSeeder extends Seeder
         DB::table('configs')->insert([
             [
                 'key' => 'web_logo',
-                'value' => ''
+                'value' => null
             ],
             [
                 'key' => 'web_name',
@@ -29,47 +29,47 @@ class ConfigSeeder extends Seeder
             ],
             [
                 'key' => 'web_seotitle',
-                'value' => ''
+                'value' => null
             ],
             [
                 'key' => 'web_keywords',
-                'value' => ''
+                'value' => null
             ],
             [
                 'key' => 'web_description',
-                'value' => ''
+                'value' => null
             ],
             [
                 'key' => 'web_copyright',
-                'value' => ''
+                'value' => null
             ],
             [
                 'key' => 'address',
-                'value' => ''
+                'value' => null
             ],
             [
                 'key' => 'contact_phone',
-                'value' => ''
+                'value' => null
             ],
             [
                 'key' => 'fax',
-                'value' => ''
+                'value' => null
             ],
             [
                 'key' => 'contact_email',
-                'value' => ''
+                'value' => null
             ],
             [
                 'key' => 'contacts',
-                'value' => ''
+                'value' => null
             ],
             [
                 'key' => 'upload_type',
-                'value' => ''
+                'value' => null
             ],
             [
                 'key' => 'upload_maximum_size',
-                'value' => ''
+                'value' => null
             ],
         ]);
     }
