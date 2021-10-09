@@ -17,6 +17,7 @@ class Section extends JsonResource
         return [
             'id' => intval($this->id),
             'name' => $this->name,
+            'sub_title' => $this->sub_title,
             'parent_id' => intval($this->parent_id),
             'parent_name' => $this->parent_id ? $this->parent->name : null,
             'description' => $this->description,
