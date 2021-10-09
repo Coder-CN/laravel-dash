@@ -13,6 +13,7 @@ class Config extends Model
 
     public function scopeGetValue($query, $key)
     {
-        return $query->where('key', $key);
+        $result = $query->where('key', $key)->first();
+        return $result ? $result->value : null;
     }
 }
