@@ -6,13 +6,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class Config extends JsonResource
 {
-    protected $json = [
-        'web_description',
-        'web_keywords',
-        'web_name',
-        'web_seotitle'
-    ];
-
     /**
      * Transform the resource into an array.
      *
@@ -23,7 +16,7 @@ class Config extends JsonResource
     {
         return [
             'key' => $this->key,
-            'value' => in_array($this->key, $this->json) ? json_decode($this->value) : $this->value
+            'value' => $this->value
         ];
     }
 }
