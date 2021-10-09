@@ -11,9 +11,9 @@ class Config extends Model
 
     protected $fillable = ['key', 'value'];
 
-    public function scopeGetValue($query, $key)
+    public static function getValue($key)
     {
-        $result = $query->where('key', $key)->first();
+        $result = self::where('key', $key)->first();
         return $result ? $result->value : null;
     }
 }
