@@ -5,6 +5,7 @@ namespace Coder\LaravelDash\Http\Controllers;
 use Coder\LaravelDash\Models\File;
 use Coder\LaravelDash\Http\Resources\File as ResourcesFile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
@@ -18,7 +19,7 @@ class FileController extends Controller
         $perPage = $request->input('pageSize', 21);
         $pageNo = $request->input('pageNo', 1);
 
-        $data = File::filter($request->all())->latest()->paginate($perPage, '*', 'page', $pageNo);
+        $data = File::whereNotNull('user_id')->filter($request->all())->latest()->paginate($perPage, '*', 'page', $pageNo);
 
         return $this->success([
             'data' => ResourcesFile::collection($data->items()),
@@ -61,7 +62,8 @@ class FileController extends Controller
                 // 存储数据库
                 $files_path[] = File::create([
                     'type' => $type,
-                    'url' => $url
+                    'url' => $url,
+                    'user_id' => Auth::guard('admin')->user()->id
                 ]);
             } else {
                 return $this->fail();

@@ -9,7 +9,7 @@ class File extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['type', 'url'];
+    protected $fillable = ['type', 'url', 'user_id'];
 
     public function scopeFilter($query, $params)
     {
