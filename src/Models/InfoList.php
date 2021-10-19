@@ -36,8 +36,8 @@ class InfoList extends Model
                 });
             } else if ($key === 'release_at' && is_array($value)) {
                 $query->where('release_at', '>=', $value[0])->where('release_at', '<=', $value[1]);
-            } else if ($key === 'is_top') {
-                $query->where('is_top', $value ? true : false);
+            } else if ($key === 'is_top' || $key === 'is_show') {
+                $query->where($key, $value ? true : false);
             }
         }
 
