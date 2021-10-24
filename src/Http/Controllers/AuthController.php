@@ -30,6 +30,9 @@ class AuthController extends Controller
         if (!$admin || !Hash::check($password, $admin->password)) {
             return $this->fail('用户名与密码不匹配');
         }
+        if ($admin->is_ban) {
+            return $this->fail('已被禁止登陆');
+        }
         
         $admin->login($request);
 
