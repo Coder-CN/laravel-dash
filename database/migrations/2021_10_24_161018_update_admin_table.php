@@ -15,6 +15,7 @@ class UpdateAdminTable extends Migration
     {
         Schema::table('admins', function (Blueprint $table) {
             $table->boolean('is_ban')->default(false)->after('api_token');
+            $table->softDeletes()->after('last_login_ip')->nullable();
         });
     }
 
@@ -26,6 +27,7 @@ class UpdateAdminTable extends Migration
     public function down()
     {
         Schema::table('admins', function (Blueprint $table) {
+            $table->dropColumn('deleted_at');
             $table->dropColumn('is_ban');
         });
     }
