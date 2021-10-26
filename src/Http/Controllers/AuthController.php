@@ -31,7 +31,7 @@ class AuthController extends Controller
             return $this->fail('用户名与密码不匹配');
         }
         if ($admin->is_ban) {
-            return $this->fail('已被禁止登陆');
+            return $this->fail('已被禁止登陆');
         }
         
         $admin->login($request);
